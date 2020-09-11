@@ -94,7 +94,7 @@ summary(penguins)
 
 The chunk below is going to draw a plot based on `penguins` dataset.
 
-```{r plot_create, tidy=TRUE, warning=FALSE}
+```{r plot_create, warning=FALSE}
 plot_df = tibble(
   x = penguins$bill_length_mm,
   y = penguins$flipper_length_mm
@@ -110,7 +110,7 @@ ggplot(plot_df, aes(x = x, y = y, color = species)) +
   theme(plot.title = element_text(hjust = 0.5))
 
 ```
-```{r save_plot, echo=FALSE, warning=FALSE}
+```{r save_plot, warning=FALSE}
 
 ggsave(file = "penguins_plot.png", width = 6, height = 6, type = "cairo", dpi = 300)
 ```
