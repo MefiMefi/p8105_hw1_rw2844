@@ -82,7 +82,35 @@ as.numeric(as.factor(logi_)) * (norm_)
 
 # Problem 2
 
-```{r setup_penguins}
+This is a summary of the `penguins` dataset:
+```{r penguins_summary, collapse=TRUE}
 data("penguins", package = "palmerpenguins")
+summary(penguins)
+
+```
+
+* The number of rows in `penguins` is `r nrow(penguins)`.
+* The number of columns in `penguins` is `r ncol(penguins)`.
+
+The chunk below is going to draw a plot based on `penguins` dataset.
+
+```{r plot_create, tidy=TRUE, warning=FALSE}
+plot_df = tibble(
+  x = penguins$bill_length_mm,
+  y = penguins$flipper_length_mm
+)
+
+species = penguins$species
+
+ggplot(plot_df, aes(x = x, y = y, color = species)) +
+  geom_point() +
+  xlab("bill length(mm)") +
+  ylab("flipper length(mm)") +
+  ggtitle("Penguins") +
+  theme(plot.title = element_text(hjust = 0.5))
+
+```
+```{r save_plot, echo=FALSE, warning=FALSE}
+ggsave(file = "penguins_plot.png", width = 6, height = 6, type = "cairo", dpi = 600)
 ```
 
